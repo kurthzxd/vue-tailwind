@@ -4,7 +4,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0" @click="goNow">
               <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
             </div>
             <!-- <div class="hidden md:block">
@@ -130,5 +130,12 @@ const openCart = () =>{
   router.push({name: ROUTE_NAME.CART_PAGE})
   emit("stateChange", stateChanges.value++)
 }
+
+const goNow = () =>{
+  router.push({name: ROUTE_NAME.SESSION})
+
+}
+
+
 </script>
 
