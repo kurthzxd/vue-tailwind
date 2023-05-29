@@ -92,7 +92,16 @@
             <n-input v-model:value="model.stream" placeholder="stream" />
           </n-form-item-gi>
           <n-gi :span="24">
-            <div style="display: flex; justify-content: flex-end">
+            <div style="display: flex; justify-content: space-between">
+              <n-button
+                type="secondary"
+                ghost
+                round
+                @click="router.go(-1)"
+              >
+                Back
+              </n-button>
+  
               <n-button
                 type="primary"
                 ghost
