@@ -3,16 +3,13 @@
     <n-h3 justify="center">Edit Session</n-h3>
   </n-space>
 
-  <!-- <div v-for="(item, index) in Object.keys(model)" :key="index">
-{{ item }}
-</div> -->
   <n-space justify="center">
+    <!-- :rules="model" blocker to fix -->
     <n-form
       ref="formRef"
       :model="model"
       label-placement="top"
       :label-width="160"
-      :rules="model"
       :style="{
         maxWidth: '640px',
       }"
@@ -272,11 +269,7 @@ const getData = (e) => {
 
 const handleValidateButtonClick = (e) => {
 
-  let result = getData(model.value);
-  console.log("result", result);
-
   e.preventDefault();
-  
   formRef.value?.validate((errors) => {
     if (!errors) {
       //message.success("Valid");
