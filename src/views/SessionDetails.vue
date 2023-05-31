@@ -4,7 +4,6 @@
   </n-space>
 
   <n-space justify="center">
-    <!-- :rules="model" blocker to fix -->
     <n-form
       ref="formRef"
       :model="model"
@@ -13,26 +12,27 @@
       :style="{
         maxWidth: '640px',
       }"
+      :rules="rules"
     >
       <n-grid :span="24" :x-gap="24">
         <n-form-item-gi
-          v-for="(item, index) in Object.keys(model)"
+          v-for="(item, index) in Object.keys(modelFields)"
           :key="index"
           :span="12"
-          :label="model[item].label"
+          :label="modelFields[item].label"
           :path="item"
         >
           <n-select
-            v-if="model[item].inputType == 'select'"
-            v-model:value="model[item].value"
-            :placeholder="model[item].label"
-            :options="model[item].options"
+            v-if="modelFields[item].inputType == 'select'"
+            v-model:value="model[item]"
+            :placeholder="modelFields[item].label"
+            :options="modelFields[item].options"
           />
 
           <n-input
-            v-if="model[item].inputType == 'input'"
-            v-model:value="model[item].value"
-            :placeholder="model[item].label"
+            v-if="modelFields[item].inputType == 'input'"
+            v-model:value="model[item]"
+            :placeholder="modelFields[item].label"
           />
         </n-form-item-gi>
 
@@ -73,18 +73,117 @@ import {
 
 import { useRouter } from "vue-router";
 
-// const message = useMessage()
 const router = useRouter();
 
 const currentTrack = ref({});
-
-const model = ref({
+const rules = ref({
   track: {
-    value: null,
-    inputType: "select",
     required: true,
     trigger: ["blur", "input"],
     message: "Please input adDuration",
+  },
+  type: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  adDuration: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  adStream: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  duration: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  start: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  end: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  description: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  download: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  downloadDescription: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  intro: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  speaker: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  speakerCompany: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  speakerTitle: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  sponsor: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  stream: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+
+  title: {
+    required: true,
+    trigger: ["blur", "input"],
+    message: "Please input adDuration",
+  },
+});
+const model = ref({});
+const modelFields = ref({
+  track: {
+    value: null,
+    inputType: "select",
+    label: "Track",
     options: [
       {
         label: "Sales",
@@ -100,9 +199,6 @@ const model = ref({
   type: {
     value: null,
     inputType: "select",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
     label: "Type",
     options: [
       {
@@ -120,135 +216,90 @@ const model = ref({
     value: null,
     inputType: "input",
     label: "Ad Duration",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   adStream: {
     value: null,
     inputType: "input",
     label: "Ad Stream",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   duration: {
     value: null,
     inputType: "input",
     label: "Duration",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   start: {
     value: null,
     inputType: "input",
     label: "Start",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   end: {
     value: null,
     inputType: "input",
     label: "End",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   description: {
     value: null,
     inputType: "input",
     label: "Description",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   download: {
     value: null,
     inputType: "input",
     label: "Download",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   downloadDescription: {
     value: null,
     inputType: "input",
     label: "Download Description",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   intro: {
     value: null,
     inputType: "input",
     label: "Intro",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   speaker: {
     value: null,
     inputType: "input",
     label: "Speaker",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   speakerCompany: {
     value: null,
     inputType: "input",
     label: "Speaker Company",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   speakerTitle: {
     value: null,
     inputType: "input",
     label: "Speaker Title",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   sponsor: {
     value: null,
     inputType: "input",
     label: "Sponsor",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   stream: {
     value: null,
     inputType: "input",
     label: "Stream",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 
   title: {
     value: null,
     inputType: "input",
     label: "Title",
-    required: true,
-    trigger: ["blur", "input"],
-    message: "Please input adDuration",
   },
 });
 
@@ -257,27 +308,17 @@ const formRef = ref(null);
 onMounted(() => {
   currentTrack.value = router.currentRoute.value.query;
   for (let item in currentTrack.value) {
-    model.value[item].value = currentTrack.value[item];
+    model.value[item] = currentTrack.value[item];
   }
 });
 
-const getData = (e) => {
-  return Object.keys(e).map((emp) => {
-    return { [emp]: e[emp].value };
-  });
-};
-
 const handleValidateButtonClick = (e) => {
-
   e.preventDefault();
   formRef.value?.validate((errors) => {
     if (!errors) {
-      //message.success("Valid");
       alert("Valid");
     } else {
-      console.log(errors);
       alert("Invalid");
-      //message.error("Invalid");
     }
   });
 };

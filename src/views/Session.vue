@@ -1,10 +1,9 @@
 <template>
-    <n-space justify="center">
+  <n-space justify="center">
     <n-h3> Sessions</n-h3>
   </n-space>
   <div>
-
-   <n-data-table
+    <n-data-table
       :columns="columns"
       :data="data"
       :pagination="pagination"
@@ -19,11 +18,9 @@ const pagination = ref(false);
 import { NDataTable, NButton, NSpace, NH3 } from "naive-ui";
 import { useRouter } from "vue-router";
 import { ROUTE_NAME } from "../router";
-// const message = useMessage()
 
 const router = useRouter();
 
-const message = ref("");
 const createColumns = ({ play }) => {
   return [
     {
@@ -45,10 +42,10 @@ const createColumns = ({ play }) => {
         return h(
           NButton,
           {
-            type:"primary",
+            type: "primary",
             ghost: true,
             primary: true,
-            round:true,
+            round: true,
             size: "small",
             onClick: () => play(row),
           },
@@ -94,14 +91,11 @@ const str_pad_left = (string, pad, length) => {
 const columns = ref(
   createColumns({
     play(row) {
-      console.log("row", row);
       router.push({
         name: ROUTE_NAME.SESSION_DETAILS,
         params: { id: row.stream },
-        query:  row 
+        query: row,
       });
-      //router.push({ path: `/brands/${row.stream}`,   });
-      // message.value(`Play ${row.title}`);
     },
   })
 );
